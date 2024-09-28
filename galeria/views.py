@@ -12,3 +12,13 @@ def imagem(request, foto_id):
     #ao renderizar passo além da url passo um dicionário com os dados da fotografia
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
+def buscar(request):
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True)
+
+    if "buscar" in request.GET: 
+        nome_a_buscar = request.GET["buscar"] 
+        if nome_a_buscar:
+            #vamos redefinir fotografias com o filtro da variável nome__icontains quer dizer que estamos buscando na variável nome se contém o nome a buscar em alguma parte dete 
+            fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
+        #aqui passamos para o template buscar.html os cards que é um dicionário com os dados filtrados.
+        return render(request, 'galeria/buscar.html',{"cards": fotografias})
