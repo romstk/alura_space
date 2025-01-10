@@ -44,10 +44,7 @@ def cadastro(request):
         form = CadastroForms(request.POST)
 
         if form.is_valid():
-            if form['senha_1'].value() != form['senha_2'].value():
-                #se senha e confirmações não forem iguais o sistema redireciona para a página de cadastro novamente
-                messages.error(request, "Sennha e confirmação de senha devem ser iguais.")
-                return redirect('cadastro') 
+            
             #atribuindo as variáveis com dados dos campos do forms.
             nome = form["nome_cadastro"].value()
             email = form["email"].value()
@@ -72,6 +69,6 @@ def cadastro(request):
     return render(request, "usuarios/cadastro.html", {"form": form})
 
 def logout(request):
-    auth.logout
+    auth.logout(request)
     messages.info(request, "Logout efetuado! ")
     return redirect('login')

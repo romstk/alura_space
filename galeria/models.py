@@ -1,6 +1,6 @@
 from django.db import models
-
 from datetime import datetime
+from django.contrib.auth.models import User
 
 # Criação das classes de modelo que herdarão a classe models 
 class Fotografia(models.Model):
@@ -18,7 +18,17 @@ class Fotografia(models.Model):
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
     publicada = models.BooleanField(default=False)
     data_fotografia = models.DateTimeField(default=datetime.now, blank=False)
-
+    #campo associado a tabela de usuários para armazenarmos o usuário
+    #on_delete - caso o usuário seja deletado vamos atribuir null a este campo
+    #null=True, significa que o campo aceitará o valor null
+    #related_name="user" , este campo serve para para facilitar a localização de tabelas e funcionalidades
+    usuario = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name="user" 
+    )
     #para retornar somente o nome da classe 
     def __str__(self):
         return self.nome
