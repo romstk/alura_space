@@ -1,0 +1,8 @@
+{% if messages %} 
+    {% for message in messages %}
+        <!-- {{ message.tags } chama a mensagem personalizada em settings conforme o tipo de mensagem que presisar para então atribuir a formatação de acordo com a mensagem a ser mostrada.  -->
+        <div class="alert alert-{{ message.tags }}">
+            {{ message}}
+        </div>
+    {% endfor %}
+{% endif %}

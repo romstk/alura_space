@@ -84,7 +84,10 @@ class CadastroForms(forms.Form):
         #se o nome tiver algum dado vai aplicar o método que tira os espaços das extremidades
         if nome:
             nome = nome.strip()
-            #se nome tiver espaços vamos lançar uma mensagem de erro pois não poderá aceitar nomes com espaços entre as palavras
+            #se nome tiver espaços vamos lançar uma mensagem de erro pois não poderá #aceitar nomes com espaços entre as palavras
+
+            #raise.ValidateError é usado em formulários no Django para lançar um erro #de validação quando os dados fornecidos pelo usuário não atendem a #determinados critérios. Ele faz parte do sistema de validação do Django, #que é uma ferramenta poderosa #para garantir que os dados de entrada sejam #válidos antes de serem #processados.
+
             if " " in nome: 
                 raise forms.ValidationError("Espaços não são permitidos neste campo.")
             else:
