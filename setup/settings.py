@@ -32,6 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -44,7 +45,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'galeria.apps.GaleriaConfig',
     'usuarios.apps.UsuariosConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'django.contrib.sites',
+
 ]
+
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +71,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
+
 
 ROOT_URLCONF = 'setup.urls'
 
@@ -148,3 +167,25 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success'
 }
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': str(os.getenv('CLIENT_ID_GITHUB')),
+            'secret': str(os.getenv('SECRET_KEY_GITHUB')),
+            'key': ''
+        }
+    }
+}
+
+#página que vai ser redirecionada a aplicação após o login com o GitHub 
+LOGIN_REDIRECT_URL = '/'
+#página que vai ser redirecionada a aplicação após o logout com o GitHub 
+LOGOUT_REDIRECT_URL = '/login'
+#esta variável define que ao realizar o acesso ao login vai direto para a página do github ao invés da página intermediária do OAuth que teria o link para logar e então ir para o github
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+#esta variável é para quando eu for fazer o logout não ter a página de confirmação se deseja realmente sair do login do github/
+ACCOUNT_LOGOUT_ON_GET = True

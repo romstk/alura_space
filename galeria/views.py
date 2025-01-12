@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from galeria.models import Fotografia
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+
+#este decorator está definindo que esta view só será renderizada se o login tenha sido feito. Vou deixar ele comentado pois tenho um controle na aplicação com outro login que não é pelo github,que já bloqueia o acesso a páginas se não tiver feito login. 
+#@login_required
 def index(request):
     #primeiramente vamos testar se o usuário está logado. Se não tiver vamos redirecionar para login 
     if not request.user.is_authenticated: 

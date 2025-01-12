@@ -61,7 +61,30 @@
                         <button type="submit" class="btn btn-success col-12" style="padding: top 5px;">Logar</button>
                     </div>
                 </form>
+                
+                <!-- 
+                Neste ponto da tela de login vamos implementar uma área para a funcionalidade de se logar com o github 
+                -->
+                <div>
+                    <h2>Autenticação com OAuth 2.0</h2>
+                    <div class="social-media-details">
+                        <a href="http://localhost:8000/accounts/github/login/?process=login">
+                            <img src="{% static '/assets/logo/github.svg' %}" alt="Ícone para realizar autenticação com o GitHub">
+                        </a>
+                        <p>GitHub</p>
+
+                        
+                    </div>
+
+                  
+
+                </div>
+
+
+
+
             </section>
+            
         </main>
     </div>
 </body>
