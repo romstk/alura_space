@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from galeria.models import Fotografia
+from apps.galeria.models import Fotografia
 
 #adiciono uma classe que vai herdar admin.ModelAdmin
 #No escopo da classe, digitamos um parâmetro nomeado "list_display()" em que desejamos exibir o id, o nome e a legenda. 

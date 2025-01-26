@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     #a rota abaixo está sendo importada do arquivo galeria.urls, que é onde está definida as rotas para o app galeria,
-    path('', include('galeria.urls')),
-    path('', include('usuarios.urls')),
+    path('', include('apps.galeria.urls')),
+    path('', include('apps.usuarios.urls')),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

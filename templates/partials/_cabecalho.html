@@ -1,12 +1,29 @@
 {% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+    
+  
+</head>
+
+<body>
+
+
 <div class="pagina-inicial">
         <header class="cabecalho">
             <img src="{% static '/assets/logo/Logo(2).png'%}" alt="Logo da Alura Space" />
-            {% for message in messages %}
-                <div class="alert alert-primary">
-                    <p id="messages"> {{ message}} </p>
-                </div>
-            {% endfor %}
+            {% include 'partials/_alertas.html' %}
             <div class="cabecalho__busca">
                 <div class="busca__fundo">
                     
@@ -26,5 +43,6 @@
                 <a href="{% url 'login' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png'%}">Login</a>
                 <a href="{% url 'cadastro' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png'%}">Cadastro</a>
                 <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png'%}">Logout</a>
+                <a href="{% url 'nova_imagem' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png'%}">Nova Imagem</a>
             </nav>
         </section>
