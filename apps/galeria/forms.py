@@ -1,5 +1,7 @@
 from django import forms
 from apps.galeria.models import Fotografia
+
+
 class FotografiaForm(forms.ModelForm):
     #Dentro desta classe de formulário vou inserir outra classe com os matadados da model que irei utilizar para criar o form. 
     class Meta: 

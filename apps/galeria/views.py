@@ -51,7 +51,7 @@ def nova_imagem(request):
         form = FotografiaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save() #como estamos usando um ModelForm-FotografiaForm já basta mandar o form ser salvo que o Django se encarrega de tratar a model vinculada ao form e salvar os dados. 
-            messages.success(request, 'Nova fotografia cadastgrada')
+            messages.success(request, 'Nova fotografia cadastrada')
             return redirect('home')
 
 
